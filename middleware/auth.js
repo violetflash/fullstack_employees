@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { prisma } = require('../prisma/prisma-client');
 
-const auth = async (req, res, next) => {
+const checkAuthMiddleware = async (req, res, next) => {
     try {
         // заголовок авторизации приходит в виде строки:
         // "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjg2NDAyNDYyLCJleHAiOjE2ODg5OTQ0NjJ9._zKsDhSNYDQ_qCto62W8eFbPTf-FDfsr7w3HSS6FQxU"
@@ -10,6 +10,7 @@ const auth = async (req, res, next) => {
         //  с помощью секретного ключа декодируем токен, и достаем переданный
         //  в него в контроллере пэйлоад (jwt.sign(пейлоад --> { id: user.id } <--, secret, { expiresIn: '30d' })) .
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
         const user = await prisma.user.findUnique({
             where: {
                 id: decoded.id
@@ -27,5 +28,5 @@ const auth = async (req, res, next) => {
 };
 
 module.exports = {
-    auth
+    checkAuthMiddleware
 }

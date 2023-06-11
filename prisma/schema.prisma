@@ -11,19 +11,24 @@ datasource db {
 }
 
 model User {
-  id       Int @id @default(autoincrement())
-  email    String
-  password String
-  name     String
-  createdEmployee Employee[]
+  id         Int        @id @default(autoincrement())
+  email      String     @unique
+  password   String
+  firstname  String
+  lastname   String
+  created_at DateTime   @default(now())
+  employees  Employee[]
+  is_admin   Boolean    @default(false)
 }
 
 model Employee {
-  id Int @id @default(autoincrement())
-  firstName String
-  lastName String
-  age String
-  address String
-  user User @relation(fields: [userId], references: [id])
-  userId Int
+  id         Int      @id @default(autoincrement())
+  firstname  String
+  lastname   String
+  age        String
+  address    String
+  user       User     @relation(fields: [user_id], references: [id])
+  user_id    Int
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
