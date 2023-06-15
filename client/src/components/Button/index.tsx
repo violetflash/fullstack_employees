@@ -1,27 +1,29 @@
 // @flow
+import { CSSProperties, FC } from 'react';
 import { Button, Form } from 'antd';
 import { ButtonHTMLType } from 'antd/es/button';
 import { ButtonProps, BaseButtonProps } from 'antd/es/button/button';
-import { FC, ReactNode } from 'react';
+
+const buttonStyles: CSSProperties = {
+  color: 'inherit'
+}
 
 type Props = {
   htmlType?: ButtonHTMLType;
-  viewProps: BaseButtonProps;
-  buttonProps: ButtonProps;
-};
+} & BaseButtonProps & ButtonProps;
 export const AppButton: FC<Props> = ({
   htmlType,
-  viewProps,
-  buttonProps
+  children,
+  ...props
 }) => {
   return (
     <Form.Item>
       <Button
-        {...viewProps}
-        {...buttonProps}
+        style={buttonStyles}
+        {...props}
         htmlType={htmlType}
       >
-        {viewProps.children}
+        {children}
       </Button>
     </Form.Item>
   );

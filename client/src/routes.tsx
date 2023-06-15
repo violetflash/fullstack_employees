@@ -22,5 +22,9 @@ export const appRouter = createBrowserRouter([
   {
     path: PATHS.register,
     element: <Register/>
+  },
+  {
+    path: PATHS.employee,
+    element: <h1>Employees</h1>
   }
 ]);

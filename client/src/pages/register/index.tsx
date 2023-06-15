@@ -7,7 +7,7 @@ type Props = {
 export const Register = (props: Props) => {
   return (
     <div>
-      Зарегистрироваться
+      Форма регистрации
     </div>
   );
 };
