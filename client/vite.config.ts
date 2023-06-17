@@ -1,6 +1,9 @@
+// import * as dns from 'dns';
 import * as path from 'path';
-// import { defineConfig } from "vitest/config"
 import { defineConfig, loadEnv } from 'vite'
+import liveReload from 'vite-plugin-live-reload'
+
+// dns.setDefaultResultOrder('verbatim')
 
 import react from "@vitejs/plugin-react"
 
@@ -15,7 +18,9 @@ export default defineConfig(({ command, mode }) => {
     // define: {
     //   __APP_ENV__: env.APP_ENV,
     // },
-    plugins: [react()],
+    plugins: [react({
+      include: "**/*.tsx",
+    }), liveReload('**/*.tsx')],
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src')
@@ -23,7 +28,14 @@ export default defineConfig(({ command, mode }) => {
     },
     server: {
       open: true,
-      port: Number(env.VITE_PORT)
+      port: Number(env.VITE_PORT),
+      // host: 'localhost',
+      // hmr: {
+      //   host: 'localhost'
+      // },
+      // watch: {
+      //   usePolling: true,
+      // }
     },
     build: {
       outDir: "build",

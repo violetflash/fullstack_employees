@@ -9,7 +9,7 @@ type Props = InputProps & {
   isConfirmPassword?: boolean;
   // isPassword?: boolean;
 };
-export const InputField = memo(({
+const InputField = memo(({
   // isPassword = false,
   isConfirmPassword = false,
   dependencies,
@@ -81,3 +81,5 @@ export const InputField = memo(({
     </Form.Item>
   );
 });
+
+export default memo(InputField);

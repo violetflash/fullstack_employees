@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Layout, Space, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import { PATHS } from '../../routes';
-import { AppButton } from '../Button';
+import AppButton from '../Button/Button';
 type Props = {
 
 };

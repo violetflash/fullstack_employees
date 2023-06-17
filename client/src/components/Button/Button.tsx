@@ -1,5 +1,5 @@
 // @flow
-import { CSSProperties, FC } from 'react';
+import { CSSProperties, FC, memo } from 'react';
 import { Button, Form } from 'antd';
 import { ButtonHTMLType } from 'antd/es/button';
 import { ButtonProps, BaseButtonProps } from 'antd/es/button/button';
@@ -11,7 +11,7 @@ const buttonStyles: CSSProperties = {
 type Props = {
   htmlType?: ButtonHTMLType;
 } & BaseButtonProps & ButtonProps;
-export const AppButton: FC<Props> = ({
+const AppButton: FC<Props> = ({
   htmlType,
   children,
   ...props
@@ -28,3 +28,5 @@ export const AppButton: FC<Props> = ({
     </Form.Item>
   );
 };
+
+export default memo(AppButton);

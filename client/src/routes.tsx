@@ -1,6 +1,7 @@
+import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import { Login } from './pages/login';
-import { Register } from './pages/register';
+import Login from './pages/login/Login';
+import Register from './pages/register/Register';
 
 export const PATHS = {
   root: '/',

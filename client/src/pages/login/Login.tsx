@@ -1,24 +1,24 @@
 // @flow
 import { Card, Form, Layout, Row, Space, Typography } from 'antd';
-import { CSSProperties } from 'react';
+import { CSSProperties, memo } from 'react';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { AppButton } from '../../components/Button';
-import { InputField } from '../../components/Input';
-import { AppLayout } from '../../components/layout';
+import AppButton from '../../components/Button/Button';
+import InputField from '../../components/Input/Input';
+import AppLayout from '../../components/layout/Layout';
 import { PATHS } from '../../routes';
 
 type Props = {
 
 };
 
-const formStyle: CSSProperties = {
+export const formStyle: CSSProperties = {
   display: "flex",
   flexDirection: 'column',
   gap: '10px'
 }
 
-export const Login = (props: Props) => {
+const Login = (props: Props) => {
   return (
     <AppLayout>
       <Row align="middle" justify="center">
@@ -35,9 +35,7 @@ export const Login = (props: Props) => {
               Нет аккаунта?
             </Typography.Text>
             <Link to={PATHS.register}>
-              {/*<Typography.Text>*/}
                 Зарегистрироваться
-              {/*</Typography.Text>*/}
             </Link>
           </Space>
         </Card>
@@ -45,3 +43,5 @@ export const Login = (props: Props) => {
     </AppLayout>
   );
 };
+
+export default memo(Login);

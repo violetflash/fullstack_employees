@@ -1,8 +1,7 @@
 // @flow
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { Layout, Space } from 'antd';
-import { Header } from '../header';
-import s from './index.module.css'
+import { Header } from '../header/Header';
 
 type Props = {
   children: React.ReactNode
@@ -23,7 +22,7 @@ const contentStyle: React.CSSProperties = {
   color: 'inherit',
   background: 'inherit',
 };
-export const AppLayout: FC<Props> = ({ children }) => {
+const AppLayout: FC<Props> = ({ children }) => {
   return (
       <Layout style={layoutStyle}>
         <Header/>
@@ -33,3 +32,5 @@ export const AppLayout: FC<Props> = ({ children }) => {
       </Layout>
   );
 };
+
+export default memo(AppLayout);
