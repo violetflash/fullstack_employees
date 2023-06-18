@@ -4,3 +4,7 @@ export type ErrorWithMessage = {
     message: string;
   }
 }
+
+export type Token = {
+  token: string;
+}

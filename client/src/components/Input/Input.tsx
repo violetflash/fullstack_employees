@@ -7,10 +7,8 @@ import * as React from 'react';
 type Props = InputProps & {
   dependencies?: NamePath[];
   isConfirmPassword?: boolean;
-  // isPassword?: boolean;
 };
 const InputField = memo(({
-  // isPassword = false,
   isConfirmPassword = false,
   dependencies,
   ...props
