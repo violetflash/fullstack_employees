@@ -32,6 +32,10 @@ const authSlice = createSlice({
         state.user = action.payload;
         state.isAuthenticated = true;
       })
+      .addMatcher(authApi.endpoints.profile.matchPending, (state, action) => {
+        console.log(state);
+        console.log(action);
+      })
       .addDefaultCase((state, action) => {})
   }
 })
